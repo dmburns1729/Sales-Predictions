@@ -5,6 +5,6 @@ David Burns
  
 ## Data Cleaning
 
-##Exploratory Visuals
+## Exploratory Visuals
 
-##Explanatory Visuals
+## Explanatory Visuals
