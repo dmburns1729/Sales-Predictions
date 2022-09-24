@@ -3,9 +3,11 @@ David Burns
 
 ## Loading Data
 
-I am not sure what you are looking for.  The first file is 
- 
+Untitled5.ipynb is an example of loading data.
+
 ## Data Cleaning
+
+
 
 ## Exploratory Visuals
 
