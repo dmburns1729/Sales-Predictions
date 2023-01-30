@@ -63,28 +63,13 @@ We ran two additional regressions of the sales data. The first was a linear regr
 
 ![Regression Coefficients](https://user-images.githubusercontent.com/113855848/215608702-30b5b6d8-cc7a-43f3-b0f4-16da1b0f4b31.png)
 
-The coefficients for each top item item:
-
-Outlet_Type_Supermarket Type3 3,365.88<br>
-Outlet_Type_Supermarket Type1 1,940.48<br>
-Outlet_Type_Supermarket Type2 1,657.92<br>
-Item_MRP 984.31<br>
-
 These coefficients mean that for every unit increase in each underlying feature value, the projected sale of that product increses by these amounts.  For instance, for every unit increase in Item_MRP, the total sales of that product increases by 984.31.  This is also true for the outlet type.  However, outlet type is a categorical value so it is either a one or a zero depending on whether or not the store is that type.  For instance, if the outlet type is a supermarket type 3 the total sales volume would be projected to be 3,365.88 as a baseline.  This is clearly a crude limitation of the simple regression model.  
 
-means that depending on the store where the product is sold, these are the baseline sales figures for the product.
-
+##### Feature Importance
 
 ![Linreg](https://user-images.githubusercontent.com/113855848/215377220-f003e105-d349-4e06-8712-05456571a25c.png)
 
-
-
-
 The most impactful features are the outlet type - Type 1, 2, or 3 and the sale price of the object. When predicting the sale of an item, the size and by implication the volume of products sold, have a large impact on the total sales of the product.
-
-
-
-The Item_MRP coefficient means that for every increase in the unit price of the item, the total sales volume increases by 984.
 
 #### Random Forest Regressor
 
