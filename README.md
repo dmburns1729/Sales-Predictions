@@ -82,6 +82,24 @@ The Item_MRP coefficient means that for every increase in the unit price of the 
 
 Based on both 'importance' and 'permutation importance' the top five features per the Random Forest Regressor are item_MRP, outlet size (1, 2, and 3), and Item_Visibility.  
 
+##### SHAP Feature Analysis
+
+In addition to looking at feature 'importance' and 'permutation importance' I performed a SHAP analysis.  The SHAP analysis is another way to measure the importance of the various features to the regression.  
+
+![shap_bar_plot](https://user-images.githubusercontent.com/113855848/215603267-edb97d61-9a1b-4803-8705-6cce4ca8fc13.png)
+
+The top features measured by permutation importance in descending order are Supermarket type 3, item_MRP, Supermarket type 1, and Supermarket type 2.  The top features measured by SHAP are item_MRP, Supermarket type 1, Supermarket type 3, Supermarket type 2.  The top features are the same but the order of them is different.
+
+![summary_plot](https://user-images.githubusercontent.com/113855848/215603725-6bb33226-3958-4e02-83ed-92258580ca15.png)
+
+Per Shap, the most important four features are item_MRP, Supermarket type 1, Supermarket type 3, Supermarket type 2.  
+
+For item_MRP, as the price of the item increases, the total sales volume of the items increases.  
+
+Supermarket type are all categorical features.  If the store is a supermarket type 3, the sales volume increases significantly.  This would imply that supermarket 3 is the highest volume supermarket.  If the supermarket is type 1 or 2, the sales volume increases but not as much as for type 3.  
+
+
+
 ### For Further Information
 
 For any additional questions, please contact me at dmburns@gmail.com
