@@ -128,10 +128,6 @@ This is consistent with the lime analysis.
 Per the Lime analysis, the highest sales volume item also had features that were associated with higher and lower sales volumes:
 
 - The factor that had the greatest influence on sales volume was the item MRP
-- The second
-
-
-- The factor that had the greatest influence on sales volume was the Item MRP
 - The second most important factor was that the item was sold in a Supermarket type 3
 - Similar to the lowest sales volume item, the type of product it was make an impact both positively and negatively. However, the outlet type and MRP had a much greater impact than item type.
 
