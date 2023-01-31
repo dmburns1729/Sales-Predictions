@@ -135,7 +135,7 @@ Per the Lime analysis, the highest sales volume item also had features that were
 - The second most important factor was that the item was sold in a Supermarket type 3
 - Similar to the lowest sales volume item, the type of product it was make an impact both positively and negatively. However, the outlet type and MRP had a much greater impact than item type.
 
-![Force Plot Highest](https://user-images.githubusercontent.com/113855848/215900843-af3db182-5288-4efb-a026-fa9e44b11162.png)
+![Force Plot Highest](https://user-images.githubusercontent.com/113855848/215901951-b7ae19a0-2a96-4567-ad65-c9aeeba28f87.png)
 
 Per the individual force plot:
 
@@ -145,7 +145,6 @@ Per the individual force plot:
 
 This is similar to the Lime analysis with the exception of item visibility.  
 
-![Force Plot Highest](https://user-images.githubusercontent.com/113855848/215901951-b7ae19a0-2a96-4567-ad65-c9aeeba28f87.png)
 
 
 ### For Further Information
