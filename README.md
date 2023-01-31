@@ -93,6 +93,59 @@ For item_MRP, as the price of the item increases, the total sales volume of the 
 
 Supermarket type are all categorical features.  If the store is a supermarket type 3, the sales volume increases significantly.  This would imply that supermarket 3 is the highest volume supermarket.  If the supermarket is type 1 or 2, the sales volume increases but not as much as for type 3.  
 
+##### Local Explanations
+
+I performed a Lime and a force plot analysis of the highest volume and lowest volume sample. 
+
+
+###### Lowest
+
+
+![Lime Lowest Volume](https://user-images.githubusercontent.com/113855848/215900675-f8432a57-fd1d-4549-9dd1-0f8681057246.png)
+
+Per the Lime analysis, the product with the lowest sales volume had features that were associated with both a higher and lower sales volume.
+
+- Outlet type - There are three possibilities for outlet type - Supermarket 1, 2, 3 or grocery store. This product was sold in a grocery store which is associated with the lowest sales volume of all outlet types.
+- The item had a low MRP which is associated with low sales
+- The type of item was a categorical that was one hot encoded.  This means that what type of item it was (or wasn't) had both positive and negative influences on the sales volume.  However, the outlet type and MRP had a much greater impact than item type.
+
+![Force Plot Lowest](https://user-images.githubusercontent.com/113855848/215900702-8591c97c-1000-4897-8ff3-115fa96a8c61.png)
+
+Per the Shap force plot, the items that had the most impact were
+- The fact that it wasn't supermarket 1
+- The fact that it wasn't supermarket 2
+- The fact that it wasn't supermarket 3
+- The item's MRP
+
+This is consistent with the lime analysis.
+
+
+###### Highest
+
+
+![Lime Hightest Volume](https://user-images.githubusercontent.com/113855848/215900829-749c8d1d-4b60-42bb-954b-7171a0600480.png)
+
+Per the Lime analysis, the highest sales volume item also had features that were associated with higher and lower sales volumes:
+
+- The factor that had the greatest influence on sales volume was the item MRP
+- The second
+
+
+- The factor that had the greatest influence on sales volume was the Item MRP
+- The second most important factor was that the item was sold in a Supermarket type 3
+- Similar to the lowest sales volume item, the type of product it was make an impact both positively and negatively. However, the outlet type and MRP had a much greater impact than item type.
+
+![Force Plot Highest](https://user-images.githubusercontent.com/113855848/215900843-af3db182-5288-4efb-a026-fa9e44b11162.png)
+
+Per the individual force plot:
+
+- The factor that had the greatest influence on sales volume was that the item was sold in a Supermarket type 3
+- The second most important factor was the item MRP
+- Interestingly, item visibility was the third most important factor 
+
+This is similar to the Lime analysis with the exception of item visibility.  
+
+![Force Plot Highest](https://user-images.githubusercontent.com/113855848/215901951-b7ae19a0-2a96-4567-ad65-c9aeeba28f87.png)
 
 
 ### For Further Information
