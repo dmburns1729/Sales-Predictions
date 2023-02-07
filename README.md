@@ -61,26 +61,87 @@ We ran two additional regressions of the sales data. The first was a linear regr
 
 #### Linear Regression
 
+![Regression Coefficients](https://user-images.githubusercontent.com/113855848/215608702-30b5b6d8-cc7a-43f3-b0f4-16da1b0f4b31.png)
+
+These coefficients mean that for every unit increase in each underlying feature value, the projected sale of that product increses by these amounts.  For instance, for every unit increase in Item_MRP, the total sales of that product increases by 984.31.  This is also true for the outlet type.  However, outlet type is a categorical value so it is either a one or a zero depending on whether or not the store is that type.  For instance, if the outlet type is a supermarket type 3 the total sales volume would be projected to be 3,365.88 as a baseline.  This is clearly a crude limitation of the simple regression model.  
+
+##### Feature Importance
+
 ![Linreg](https://user-images.githubusercontent.com/113855848/215377220-f003e105-d349-4e06-8712-05456571a25c.png)
 
 The most impactful features are the outlet type - Type 1, 2, or 3 and the sale price of the object. When predicting the sale of an item, the size and by implication the volume of products sold, have a large impact on the total sales of the product.
-
-The coefficients for each item:
-
-Outlet_Type_Supermarket Type3 3,365.88<br>
-Outlet_Type_Supermarket Type1 1,940.48<br>
-Outlet_Type_Supermarket Type2 1,657.92<br>
-Item_MRP 984.31<br>
-
-means that depending on the store where the product is sold, these are the baseline sales figures for the product.
-
-The Item_MRP coefficient means that for every increase in the unit price of the item, the total sales volume increases by 984.
 
 #### Random Forest Regressor
 
 ![forestreg](https://user-images.githubusercontent.com/113855848/215377549-fce3a2a0-5940-4c94-8fe4-4c205b9ce979.png)
 
 Based on both 'importance' and 'permutation importance' the top five features per the Random Forest Regressor are item_MRP, outlet size (1, 2, and 3), and Item_Visibility.  
+
+##### SHAP Feature Analysis
+
+In addition to looking at feature 'importance' and 'permutation importance' I performed a SHAP analysis.  The SHAP analysis is another way to measure the importance of the various features to the regression.  
+
+![shap_bar_plot](https://user-images.githubusercontent.com/113855848/215603267-edb97d61-9a1b-4803-8705-6cce4ca8fc13.png)
+
+The top features measured by permutation importance in descending order are Supermarket type 3, item_MRP, Supermarket type 1, and Supermarket type 2.  The top features measured by SHAP are item_MRP, Supermarket type 1, Supermarket type 3, Supermarket type 2.  The top features are the same but the order of them is different.
+
+![summary_plot](https://user-images.githubusercontent.com/113855848/215603725-6bb33226-3958-4e02-83ed-92258580ca15.png)
+
+Per Shap, the most important four features are item_MRP, Supermarket type 1, Supermarket type 3, Supermarket type 2.  
+
+For item_MRP, as the price of the item increases, the total sales volume of the items increases.  
+
+Supermarket type are all categorical features.  If the store is a supermarket type 3, the sales volume increases significantly.  This would imply that supermarket 3 is the highest volume supermarket.  If the supermarket is type 1 or 2, the sales volume increases but not as much as for type 3.  
+
+##### Local Explanations
+
+I performed a Lime and a force plot analysis of the highest volume and lowest volume sample. 
+
+
+###### Lowest
+
+
+![Lime Lowest Volume](https://user-images.githubusercontent.com/113855848/215900675-f8432a57-fd1d-4549-9dd1-0f8681057246.png)
+
+Per the Lime analysis, the product with the lowest sales volume had features that were associated with both a higher and lower sales volume.
+
+- Outlet type - There are three possibilities for outlet type - Supermarket 1, 2, 3 or grocery store. This product was sold in a grocery store which is associated with the lowest sales volume of all outlet types.
+- The item had a low MRP which is associated with low sales
+- The type of item was a categorical that was one hot encoded.  This means that what type of item it was (or wasn't) had both positive and negative influences on the sales volume.  However, the outlet type and MRP had a much greater impact than item type.
+
+![Force Plot Lowest](https://user-images.githubusercontent.com/113855848/215900702-8591c97c-1000-4897-8ff3-115fa96a8c61.png)
+
+Per the Shap force plot, the items that had the most impact were
+- The fact that it wasn't supermarket 1
+- The fact that it wasn't supermarket 2
+- The fact that it wasn't supermarket 3
+- The item's MRP
+
+This is consistent with the lime analysis.
+
+
+###### Highest
+
+
+![Lime Hightest Volume](https://user-images.githubusercontent.com/113855848/215900829-749c8d1d-4b60-42bb-954b-7171a0600480.png)
+
+Per the Lime analysis, the highest sales volume item also had features that were associated with higher and lower sales volumes:
+
+- The factor that had the greatest influence on sales volume was the item MRP
+- The second most important factor was that the item was sold in a Supermarket type 3
+- Similar to the lowest sales volume item, the type of product it was make an impact both positively and negatively. However, the outlet type and MRP had a much greater impact than item type.
+
+![Force Plot Highest](https://user-images.githubusercontent.com/113855848/215901951-b7ae19a0-2a96-4567-ad65-c9aeeba28f87.png)
+
+Per the individual force plot:
+
+- The factor that had the greatest influence on sales volume was that the item was sold in a Supermarket type 3
+- The second most important factor was the item MRP
+- Interestingly, item visibility was the third most important factor 
+
+This is similar to the Lime analysis with the exception of item visibility.  
+
+
 
 ### For Further Information
 
